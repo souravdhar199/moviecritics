@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:moviecritics/pages/movieDetailpage.dart';
 
 class SecondPage extends StatefulWidget {
   const SecondPage({super.key});
@@ -53,18 +54,43 @@ class _SecondPageState extends State<SecondPage> {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(1),
-                child: Card(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.network(
-                          "https://image.tmdb.org/t/p/w300${data[index]["backdrop_path"]}"),
-                      Container(
-                        alignment: Alignment.center,
-                        child: Text(data[index]["title"]),
-                      )
-                    ],
-                  ),
+                child: Stack(
+                  children: [
+                    Container(
+                      color: Colors.black45,
+                    ),
+                    Positioned(
+                      top: 10,
+                      left: 10,
+                      right: 10,
+                      bottom: 10,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MovieDetail(
+                                title: data[index]["title"],
+                              ),
+                            ),
+                          );
+                        },
+                        child: Card(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.network(
+                                  "https://image.tmdb.org/t/p/w300${data[index]["backdrop_path"]}"),
+                              Container(
+                                alignment: Alignment.center,
+                                child: Text(data[index]["title"]),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               );
             },

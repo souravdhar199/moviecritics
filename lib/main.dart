@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moviecritics/pages/firstpage.dart';
+import 'package:moviecritics/pages/movieDetailpage.dart';
 
 import 'package:moviecritics/pages/secondpage.dart';
 
@@ -24,7 +25,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         '/': (context) => const FirstPage(),
-        '/second': (context) => const SecondPage()
+        '/second': (context) => const SecondPage(),
       },
     );
   }
