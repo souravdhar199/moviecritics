@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:moviecritics/pages/firstpage.dart';
+
+import 'package:moviecritics/pages/secondpage.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+String value = "";
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Movie Critics"),
-          centerTitle: true,
-        ),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const FirstPage(),
+        '/second': (context) => const SecondPage()
+      },
     );
   }
 }
