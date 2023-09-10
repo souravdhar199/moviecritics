@@ -71,6 +71,9 @@ class _SecondPageState extends State<SecondPage> {
                             MaterialPageRoute(
                               builder: (context) => MovieDetail(
                                 title: data[index]["title"],
+                                image:
+                                    "https://image.tmdb.org/t/p/w300${data[index]["backdrop_path"]}",
+                                overview: data[index]["overview"],
                               ),
                             ),
                           );

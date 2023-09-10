@@ -1,19 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:moviecritics/pages/secondpage.dart';
 
-class MovieDetail extends StatefulWidget {
-  final dynamic title;
+class MovieDetail extends StatelessWidget {
+  final String title;
+  final String image;
+  final String overview;
 
-  // const MovieDetail({Key? key, required this.data}) : super(key: key);
+  const MovieDetail(
+      {super.key,
+      required this.title,
+      required this.image,
+      required this.overview});
 
-  const MovieDetail({Key? key, required this.title}) : super(key: key);
-
-  @override
-  State<MovieDetail> createState() => _MovieDetailState();
-}
-
-class _MovieDetailState extends State<MovieDetail> {
   @override
   Widget build(BuildContext context) {
-    return Text(widget.title); // Access data through the widget
+    return Material(
+      child: Padding(
+          padding: const EdgeInsets.all(34),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.network(image),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(title),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(overview),
+              const SizedBox(
+                height: 20,
+              ),
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SecondPage()));
+                  },
+                  icon: const Icon(Icons.arrow_back))
+            ],
+          )),
+    );
   }
 }
